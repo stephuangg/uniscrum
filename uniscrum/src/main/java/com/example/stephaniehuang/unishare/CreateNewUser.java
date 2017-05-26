@@ -15,6 +15,26 @@ import java.io.OutputStreamWriter;
 
 /**
  * Created by StephanieHuang on 4/24/17.
+ *
+ *
+ * This class creates basic user directories for new users.
+ * Users are identified by their email address. (username = email address)
+ * Users are also added to the USERS.TXT files which contains all the users of the app.
+ *
+ *  /(user_email_address)/USERINFO.TXT
+ *      stores user first name and last name and password info of the user
+ *
+ *   /(user_email_address)/CURRENT_SPRINTS.TXT
+ *      stores filepaths to all the current sprint directories
+ *
+ *   /(user_email_address)/LIST_OF_FOLDER_NAMES.TXT
+ *      is a file containing all of the folders to categorize the sprints
+ *
+ *   /(user_email_address)/SPRINTDIRECTORY
+ *     is directory containing all of the individual sprint directrories
+ *
+ *  /(user_email_address)/SPRINTDIRECTORY/Uncategorized
+ *      is the directory containing sprints under the 'Uncategorized' folder
  */
 
 public class CreateNewUser extends Login {
@@ -78,19 +98,24 @@ public class CreateNewUser extends Login {
                 USERDIRECTORY.mkdirs();
                 Log.d("made directory", username);
 
-                //create file for user info
-                 userinfo = new File (USERDIRECTORY.getAbsolutePath() + File.separator + "USERINFO.TXT");
+                /*********************************************
+                ********* /USERDIRECTORY/USERINFO.TXT ********
+                ** create file for user info and record in **
+                ** the file the user's name, and password  **
+                **********************************************/
+                userinfo = new File (USERDIRECTORY.getAbsolutePath() + File.separator + "USERINFO.TXT");
                 try {
                     userinfo.createNewFile();
                     FileOutputStream fos = new FileOutputStream(userinfo);
                     OutputStreamWriter oos = new OutputStreamWriter(fos);
                     oos.write("FN: " + firstname + "\n");
-                    oos.write(" LN: " + lastname + "\n");
+                    oos.write("LN: " + lastname + "\n");
+                    oos.write("PW: " + password + "\n");
                     oos.flush();
                     oos.close();
                     fos.flush();
                     fos.close();
-                    Log.d("userinfo recorded: ", firstname + lastname);
+                    Log.d("userinfo recorded: ", firstname + lastname + password);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -98,7 +123,9 @@ public class CreateNewUser extends Login {
                 }
 
 
-                //create currentsprints text file
+                /*********************************************
+                 **** /USERDIRECTORY/CURRENT_SPRINTS.TXT *****
+                 **********************************************/
                 currentsprints = new File (USERDIRECTORY.getAbsolutePath() + File.separator + "CURRENT_SPRINTS.TXT");
                    try {
                        currentsprints.createNewFile();
@@ -108,7 +135,9 @@ public class CreateNewUser extends Login {
                        Log.d("!!!!!!!!", "!!!!!CURRENT SPRINTS TEXT FILE NOT CREATED");
                    }
 
-                //create folderlist text file
+                /******************************************************
+                 ****** /USERDIRECTORY/LIST_OF_FOLDER_NAMES.TXT *******
+                 ******************************************************/
                 folderlist = new File (USERDIRECTORY.getAbsolutePath() + File.separator + "LIST_OF_FOLDER_NAMES.TXT");
                 try {
                     folderlist.createNewFile();
@@ -125,12 +154,18 @@ public class CreateNewUser extends Login {
                     Log.d("!!!!!!!!", "!!!!!LIST OF FOLDER NAME TEXT FILE NOT CREATED");
                 }
 
-                //create Sprint directory
+                /******************************************************
+                 ****** /USERDIRECTORY/SPRINTDIRECTORY *******
+                 ******************************************************/
                 SPRINTDIRECTORY = new File (USERDIRECTORY.getAbsoluteFile() + File.separator + "SPRINTDIRECTORY");
                 SPRINTDIRECTORY.mkdirs();
                 Log.d("made sprint directory", "yay");
 
-
+                /***********************************************************
+                 ****** /USERDIRECTORY/SPRINTDIRECTORY/Uncategorized *******
+                 ***********************************************************/
+                Uncategorized = new File (SPRINTDIRECTORY.getAbsolutePath() + File.separator + "Uncategorized");
+                Uncategorized.mkdirs();
 
 
                 //go back to Loginscreen

@@ -19,6 +19,33 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Vector;
 
+/**
+ * Created by StephanieHuang on 4/24/17.
+ *
+ *
+ * This class is the first screen of the app.
+ * Users log in with their email address and password.
+ * If the user is found, the user's basic directories and files are set.
+ * If the user is not found, error message shows.
+ * User has option to  'Create New' account.
+ *
+ *  /(user_email_address)/USERINFO.TXT
+ *      stores user's first name and last name and password info of the user
+ *
+ *   /(user_email_address)/CURRENT_SPRINTS.TXT
+ *      stores filepaths to all the current sprint directories
+ *
+ *   /(user_email_address)/LIST_OF_FOLDER_NAMES.TXT
+ *      is a file containing all of the folders to categorize the sprints
+ *
+ *   /(user_email_address)/SPRINTDIRECTORY
+ *     is directory containing all of the individual sprint directrories
+ *
+ *  /(user_email_address)/SPRINTDIRECTORY/Uncategorized
+ *      is the directory containing sprints under the 'Uncategorized' folder
+ */
+
+
 public class Login extends AppCompatActivity {
 
     Button createnew;
@@ -39,8 +66,8 @@ public class Login extends AppCompatActivity {
     static File currentsprints;
     static File folderlist;
 
-    //storing all the folder names
-    static Vector<String> foldernames = new Vector<String>;
+    //storing all the folder names from the file, 'folderlist'
+    static Vector<String> foldernames = new Vector<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +88,8 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        //**************** /APP/USERS.TXT *******************
+        //creates the file with all users of the app.
         USERS = new File (getFilesDir() + File.separator + "USERS.TXT");
         if (!USERS.exists()){
             try {
@@ -89,20 +118,27 @@ public class Login extends AppCompatActivity {
             }
         }
 
+        //********** LOGGING IN ****************
+        //user logins with email and password
         login = (Button) findViewById(R.id.button_Login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                //username is the email address
                 USERNAME = input_username.getText().toString();
 
-                //Open user directory based on username
+                //Open USERDIRECTORY based on username
                 USERDIRECTORY = new File (getFilesDir() + File.separator + USERNAME);
+
+                //user not found
                 if (!USERDIRECTORY.exists()){
                     loginError.setVisibility(View.VISIBLE);
                 }
+                //user found
                 else {
-                    //userdirectory found, open user info text file
+
+                    //********* /USERDIRECTORY/USERINFO.TXT ********
                     userinfo=new File (USERDIRECTORY.getAbsolutePath()+File.separator+"USERINFO.TXT");
 
                     //read the information in the user info file
@@ -113,13 +149,19 @@ public class Login extends AppCompatActivity {
                         String line;
                         int linecount = 0;
                         while ((line = r.readLine()) != null) {
+
+                            //get the user's first name
                            if (line.charAt(0)=='F') {
-                               int lastelementindex = line.length()-1;
-                               firstname = line.substring(5, lastelementindex);
+                               int lastelementindex = line.length();
+                               firstname = line.substring(4, lastelementindex);
+                               Log.d("first name", firstname);
                            }
+
+                            //get the user's last name
                             if (line.charAt(0) == 'L'){
-                                int lastelementindex = line.length()-1;
-                                lastname = line.substring(5, lastelementindex);
+                                int lastelementindex = line.length();
+                                lastname = line.substring(4, lastelementindex);
+                                Log.d("last name", lastname);
                             }
                         }
                         r.close();
@@ -131,18 +173,23 @@ public class Login extends AppCompatActivity {
                     }
 
 
-                    //set the current text file and open
+                    //********* /USERDIRECTORY/CURRENT_SPRINTS.TXT ********
                     currentsprints = new File(USERDIRECTORY.getAbsolutePath() + File.separator + "CURRENT_SPRINTS.TXT");
 
-                    //set the folder text file, open and store list of folder names in vector
+                    //********* /USERDIRECTORY/LIST_OF_FOLDER_NAMES.TXT ********
                     folderlist = new File(USERDIRECTORY. getAbsolutePath() + File.separator + "LIST_OF_FOLDER_NAMES.TXT");
                     try {
+
+                        //reading the folder names line by line
                         InputStream inputStream = new BufferedInputStream(new FileInputStream(folderlist));
                         BufferedReader r = new BufferedReader(new InputStreamReader(inputStream));
                         StringBuilder total = new StringBuilder();
                         String line;
+
                         while ((line = r.readLine()) != null) {
                             Log.d("reading list of folders", line);
+
+                            //add each folder into a vector<string> foldernames
                             foldernames.add(line);
                         }
                         r.close();
@@ -152,13 +199,14 @@ public class Login extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
+                    //********* /USERDIRECTORY/SPRINTDIRECTORY ********
+                    SPRINTDIRECTORY = new File(USERDIRECTORY.getAbsolutePath() + File.separator + "SPRINTDIRECTORY");
 
-                    //create the uncategorized directory
-                    Uncategorized = new File (SPRINTDIRECTORY.getAbsolutePath() + File.separator + "Uncategorized");
-                    Uncategorized.mkdirs();
+                    //********* /USERDIRECTORY/SPRINTDIRECTORY/Uncategorized ********
+                    Uncategorized = new File(SPRINTDIRECTORY.getAbsolutePath()+File.separator + "Uncategorized");
 
 
-                    //open the header page
+                    //open the project display page
                     Intent intent = new Intent (Login.this, ProjectDisplay.class);
                     startActivity(intent);
                 }

@@ -51,16 +51,16 @@ public class Header extends Login {
             }
         });
 
-        arrowDown = (TextView) findViewById(R.id.textView_arrowDown);
-        arrowDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //open user profile page
-                Intent intent = new Intent (Header.this, UserProfile.class);
-                startActivity(intent);
-            }
-        });
+//        arrowDown = (TextView) findViewById(R.id.textView_arrowDown);
+//        arrowDown.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //open user profile page
+//                Intent intent = new Intent (Header.this, UserProfile.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 

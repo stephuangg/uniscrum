@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:hint="School email address"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:id="@+id/editText_createUsername" />
+
+    <EditText
+        android:hint="First Name "
+        android:layout_width="250dp"
+        android:layout_marginTop="13dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_createUsername"
+        android:layout_alignStart="@+id/editText_createUsername"
+        android:id="@+id/editText_firstname" />
+
+    <EditText
+        android:hint="Last Name "
+        android:layout_width="250dp"
+        android:layout_marginTop="13dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_firstname"
+        android:layout_alignStart="@+id/editText_createUsername"
+        android:id="@+id/editText_lastname" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Create password"
+        android:layout_marginTop="13dp"
+        android:id="@+id/editText_createPassword"
+        android:layout_below="@+id/editText_lastname"
+        android:layout_alignStart="@+id/editText_createUsername" />
+
+    <Button
+        android:text="Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="43dp"
+        android:id="@+id/button_done"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="100dp" />
+
+</RelativeLayout>

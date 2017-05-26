@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/activity_header"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:textAlignment="center"
+        android:inputType="textMultiLine"
+        android:hint="Enter short description of yourself"
+        android:ems="10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:background="@android:color/white"
+        android:id="@+id/editText_selfDescription" />
+
+
+    <TextView
+        android:text="^"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textScaleX="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/button_save"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/holo_orange_light"
+        android:id="@+id/textView_arrowUp" />
+
+    <Button
+        android:text="Save"
+        android:visibility="invisible"
+        android:textSize="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/editText_selfDescription"
+        android:layout_alignRight="@id/editText_selfDescription"
+        android:id="@+id/button_save" />
+
+</RelativeLayout>

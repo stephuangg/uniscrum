@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/holo_orange_light"
+        android:id="@+id/surfaceView_header" />
+
+    <TextView
+        android:text="Uniscrum"
+        android:textSize="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="29dp"
+        android:layout_marginTop="27dp"
+        android:id="@+id/textView_logo"
+        android:textColor="#ff212121" />
+
+    <!--<TextView-->
+        <!--android:text="A creative log"-->
+        <!--android:textSize="18dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginEnd="29dp"-->
+        <!--android:layout_below="@id/textView_logo"-->
+        <!--android:id="@+id/textView_motto"-->
+        <!--android:textColor="@android:color/holo_orange_light" />-->
+
+    <TextView
+        android:text=""
+        android:textSize="24dp"
+        android:textColor="#ff212121"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:id="@+id/textView_getUsername" />
+
+    <TextView
+        android:text="v"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textScaleX="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:textColor="#ff212121"
+        android:id="@+id/textView_arrowDown" />
+
+    <SurfaceView
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/surfaceView_header"
+        android:background="#ff212121"
+        android:id="@+id/surfaceView_sidePanel" />
+
+    <Button
+        android:background="#ff212121"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:rotation="45"
+        android:layout_below="@+id/surfaceView_header"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/button_sidePanel" />
+
+    <SurfaceView
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/surfaceView_header"
+        android:background="#ff212121"
+        android:id="@+id/surfaceView_sidePanelExpanded"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:text="Start Project"
+        android:textSize="24dp"
+        android:textColor="@android:color/holo_orange_light"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="250dp"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView_startNewProject"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:text="Create Folder"
+        android:textSize="24dp"
+        android:textColor="@android:color/holo_orange_light"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/textView_startNewProject"
+        android:id="@+id/textView_createFolder"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:hint="Folder name"
+        android:textSize="24dp"
+        android:textColor="@android:color/holo_orange_light"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/textView_startNewProject"
+        android:id="@+id/editText_createFolder"
+        android:visibility="invisible"/>
+
+    <!--<Spinner-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:id="@+id/spinner_foldernames"-->
+        <!--android:layout_below="@id/textView_createFolder"-->
+        <!--android:layout_marginTop="20dp">-->
+    <!--</Spinner>-->
+
+</RelativeLayout>

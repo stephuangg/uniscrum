@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <SurfaceView
+        android:layout_width="280dp"
+        android:layout_height="150dp"
+        android:id="@+id/surfaceView_projectTemplateTopHalf"
+        android:layout_marginTop="150dp"
+        android:background="#ff212121"
+        android:layout_weight="0"
+        android:layout_marginStart="60dp"
+        />
+
+    <SurfaceView
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:layout_alignStart="@id/surfaceView_projectTemplateTopHalf"
+        android:id="@+id/surfaceView_projectTemplateBottomHalf"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/white"
+        android:layout_below="@id/surfaceView_projectTemplateTopHalf"
+        android:layout_weight="0" />
+
+
+
+    <EditText
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:text="Click the side panel to start a new project"
+        android:ems="10"
+        android:textColor="@android:color/white"
+        android:layout_alignStart="@id/surfaceView_projectTemplateTopHalf"
+        android:layout_alignTop="@id/surfaceView_projectTemplateTopHalf"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:id="@+id/editText_projectName" />
+
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_projectName"
+        android:layout_alignStart="@id/surfaceView_projectTemplateTopHalf"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:id="@+id/editText_projectStartDate" />
+
+    <EditText
+        android:layout_below="@+id/editText_projectName"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/surfaceView_projectTemplateTopHalf"
+        android:layout_marginStart="140dp"
+        android:ems="10"
+        android:id="@+id/editText_projectEndDate" />
+
+    <EditText
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_alignStart="@id/surfaceView_projectTemplateBottomHalf"
+        android:layout_marginStart="20dp"
+        android:layout_alignTop="@id/surfaceView_projectTemplateBottomHalf"
+        android:layout_marginTop="20dp"
+        android:id="@+id/editText_projectDescription" />
+
+    <include layout="@layout/activity_header"/>
+
+    <!--<TextView-->
+        <!--android:text=">"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_above="@+id/editText_projectName"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginEnd="16dp"-->
+        <!--android:layout_marginBottom="15dp"-->
+        <!--android:id="@+id/textView_projectnext"-->
+        <!--android:textSize="30sp"-->
+        <!--android:textStyle="normal|bold" />-->
+
+    <!--<TextView-->
+        <!--android:text="<"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBottom="@+id/textView_projectnext"-->
+        <!--android:layout_alignStart="@+id/editText_projectName"-->
+        <!--android:id="@+id/textView_projectPrevious"-->
+        <!--android:textSize="30sp"-->
+        <!--android:textStyle="normal|bold" />-->
+
+</RelativeLayout>
+
